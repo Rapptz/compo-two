@@ -50,4 +50,5 @@ directory.object = "obj";
 
 -- files to compile
 files = os.glob("game/*.cpp");
+table.insert(files, "libs/pugixml.cpp");
 table.insert(files, "main.cpp");

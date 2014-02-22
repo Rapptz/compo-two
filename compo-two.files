@@ -7,3 +7,5 @@ game/ActionMap.hpp
 game/Spritesheet.hpp
 game/Animation.hpp
 game/AnimatedSprite.hpp
+game/TileMap.hpp
+game/Object.hpp
