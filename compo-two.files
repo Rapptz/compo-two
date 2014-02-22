@@ -2,3 +2,4 @@ shinobi.lua
 main.cpp
 game/Game.hpp
 game/Game.cpp
+game/Action.hpp
