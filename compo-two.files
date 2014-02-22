@@ -4,3 +4,6 @@ game/Game.hpp
 game/Game.cpp
 game/Action.hpp
 game/ActionMap.hpp
+game/Spritesheet.hpp
+game/Animation.hpp
+game/AnimatedSprite.hpp
