@@ -20,17 +20,8 @@ private:
 public:
     Spritesheet() noexcept: data(nullptr) {}
 
-    explicit Spritesheet(const sf::Texture& tex, unsigned width, unsigned height): data(&tex) {
-        auto size = data->getSize();
-        if(size.x % width || size.y % height) {
-            throw std::logic_error("Sizes do not fit the sprite sheet perfectly");
-        }
-
-        for(unsigned y = 0; y < size.y; y += height) {
-            for(unsigned x = 0; x < size.x; x += width) {
-                sprites.push_back(sf::IntRect(x, y, width, height));
-            }
-        }
+    explicit Spritesheet(const sf::Texture& tex, unsigned width, unsigned height, unsigned spacing = 0): data(&tex) {
+        setSpriteSize(width, height, spacing);
     }
 
     auto operator[](unsigned index) noexcept -> decltype(sprites[0]) {
@@ -56,19 +47,16 @@ public:
         sprites.clear();
     }
 
-    void setSpriteSize(unsigned width, unsigned height) {
+    // don't know if spacing is implemented properly
+    void setSpriteSize(unsigned width, unsigned height, unsigned spacing = 0) {
         if(data == nullptr) {
             throw std::logic_error("No texture is set");
         }
 
         auto size = data->getSize();
-        if(size.x % width || size.y % height) {
-            throw std::logic_error("Sizes do not fit the sprite sheet perfectly");
-        }
-
-        for(unsigned y = 0; y < size.y; y += height) {
-            for(unsigned x = 0; x < size.x; x += width) {
-                sprites.push_back(sf::IntRect(x,y,width,height));
+        for(unsigned y = 0; y < size.y; y += height + spacing) {
+            for(unsigned x = 0; x < size.x; x += width + spacing) {
+                sprites.push_back(sf::IntRect(x, y, width, height));
             }
         }
     }

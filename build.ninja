@@ -21,9 +21,11 @@ rule link
     description = Creating $out
 
 build $objdir/game/Game.o: compile game/Game.cpp
+build $objdir/libs/pugixml.o: compile libs/pugixml.cpp
 build $objdir/main.o: compile main.cpp
 
-build $builddir/compo-two: link $objdir/game/Game.o $objdir/main.o
+build $builddir/compo-two: link $objdir/game/Game.o $objdir/libs/pugixml.o $
+    $objdir/main.o
 
 build install: phony $builddir/compo-two
 

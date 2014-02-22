@@ -24,7 +24,7 @@ struct Layer {
         vertices.resize(width * height * 4);
 
         for(unsigned i = 0; i < width; ++i) {
-            for(unsigned j = 0; j < width; ++j) {
+            for(unsigned j = 0; j < height; ++j) {
                 unsigned gid = tiles[i + j * width];
                 gid -= (firstgid - gid) > 0;
                 unsigned mod = gid % (tileInfo.x / tileWidth);
